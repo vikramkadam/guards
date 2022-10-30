@@ -1,0 +1,58 @@
+<style>
+    span{color:red}
+</style>
+
+<br>
+<h3 appHoverdir style="text-align:center;font-family: cursive;"> <a class="fa fa-paper-plane-o"></a> Airways Flights</h3>
+<hr>
+<div class="row">
+<div class="col-lg-1"></div>
+
+<div  class="col-lg-10">
+<div>    
+    <ul type="none">
+        <li *ngFor="let flight of filightsData; let i = index;">
+            <div class="alert alert-info" style="border: 2px ridge gray;color:darkblue">
+                <div class="row">                    
+                    <div class="col-lg-2"> <span>Flight :</span>{{flight.fId}}</div>
+                    <div class="col-lg-4"><span>From :</span> {{flight.fsource}}</div>
+                    <div class="col-lg-4"><span>To :</span> {{flight.fdestination}}</div>
+                    <div class="col-lg-2"> <a class="fa fa-arrow-down"  (click)="flight.visible=!flight.visible"> &nbsp;show</a></div>
+                </div>
+                <br>
+                <div *ngIf="flight.visible" style="border: 1px solid gray;padding: 20px;">
+                    <div class="row">
+                        <div class="col-lg-1"><h5><span><a class="fa fa-paper-plane-o"></a></span></h5></div>
+                        <div class="col-lg-3"><span>{{flight.fbrand}}</span> </div> 
+                        <div class="col-lg-4"><span>Take off time :</span>  {{flight.fstarttime}}</div>
+                        <div class="col-lg-4"><span>Landing time :</span> {{flight.fendtime}}</div>                                              
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-4"><span>Plane Capicity :</span>   {{flight.fseats}}</div>
+                        <div class="col-lg-4"><span>Available seats :</span> {{flight.favailableseats}}</div>   
+                        <div class="col-lg-4"><button class="btn btn-block btn-success">book now</button></div>      
+                    </div>                   
+                </div>                
+            </div>            
+        </li>
+    </ul>    
+</div>
+</div>
+
+<div class="col-lg-1"></div>
+</div>
+
+
+<div class="row"  *ngIf="isResultAvailable">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <h5 style="text-align: center; color: red; font-family: cursive; border:1px dotted ; border-radius: 10px; padding: 10px;">
+          Flights are not available on this route !    
+        </h5>
+    </div>
+    <div class="col-lg-4"></div>
+</div>
+
+
+

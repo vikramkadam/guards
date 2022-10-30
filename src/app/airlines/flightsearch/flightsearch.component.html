@@ -1,0 +1,55 @@
+<div class="alert alert-success" role="alert" style="border-top-right-radius: 50px; border-bottom-left-radius: 50px;">
+    <h5 class="alert-heading">Book International and Domestic Flights</h5>
+
+    <form [formGroup]="SearchForm">
+
+        <div class="row">
+            <div class="col-lg-6">
+                <input #ddlfromkey (keyup)="changeArrayData(ddlfromkey.value)" placeholder="From" class="form-control"
+                    type="text">
+                <select (change)="checkBothDDLValues(ddlfrom.value,ddlto.value,'ddlSource')" class="form-control" #ddlfrom formControlName="ddlSource" >
+                    <option disabled style="text-align:center;">- - SELECT - -</option>
+                    <option *ngFor="let city of citydata" value="{{city.cityId}}">{{city.cityName}}</option>
+                </select>
+
+                <div style="color: red; font-family: cursive;"
+                    *ngIf="ddlSource.invalid && (ddlSource?.dirty || ddlSource?.touched)">
+                    please select Source city.
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <input #ddltokey (keyup)="changeArrayData2(ddltokey.value)" placeholder=" Destination"
+                    class="form-control" type="text">
+                <select class="form-control" #ddlto formControlName="ddlDestination"
+                    (change)="checkBothDDLValues(ddlfrom.value,ddlto.value,'ddlDestination')">
+                    <option disabled style="text-align:center;">- - SELECT - -</option>
+                    <option *ngFor="let city2 of citydata2"  value="{{city2.cityId}}">{{city2.cityName}}</option>
+                </select>
+                <div style="color: red; font-family: cursive;"
+                    *ngIf="ddlDestination.invalid && (ddlDestination?.dirty || ddlDestination?.touched)">
+                    please select Destination city.
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <input class="form-control" formControlName="dateofJourney" type="date" min="{{currentdate}}">
+                <div style="color: red; font-family: cursive;"
+                    *ngIf="dateofJourney.invalid && (dateofJourney?.dirty || dateofJourney?.touched)">
+                    please select journey date.
+                </div>
+            </div>
+            <div class="col-lg-6">
+
+            </div>
+        </div>
+
+        <hr>
+        <button class="btn btn-outline-primary" (click)="SearchFlights()">
+            <a class="fa fa-search"></a> search flights</button>
+    </form>
+</div>

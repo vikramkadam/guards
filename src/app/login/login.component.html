@@ -1,0 +1,25 @@
+
+
+
+    <div class="offset-3 col-5" style=" border:2px solid gray; margin-top:20px; padding: 10px; background-color: rgb(155, 194, 194); border-radius: 20px;">
+        <h4 >Login to Airway</h4>
+        <div style="border:2px solid gray; margin-top:20px; padding: 10px; border-radius: 20px; background-color: white;">
+            <form [formGroup]="loginForm" >
+                <div class="form-group">
+                    <label>User name</label>
+                    <input class="form-control" type="text" formControlName="username">
+                </div>
+        
+                <div class="form-group">
+                    <label>Password</label>
+                    <input class="form-control" type="text" formControlName="password">
+                </div>
+                <button [disabled]="loginForm.invalid" (click)="LoginProcess()" class="btn btn-block btn-success">Login</button>                
+            </form>
+        </div>
+        <!-- [routerLink] = "['/registrationform']" -->
+        <small style="float:right">if dont have account ?</small> <button class="btn btn-link"><a routerLink="/registrationform" >Register now</a></button>
+    </div>   
+    
+
+

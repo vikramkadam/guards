@@ -1,0 +1,36 @@
+
+    <div class="offset-4 col-4" style="  background-color: rgb(155, 194, 194); border:2px solid gray; margin-top:20px; padding: 10px; border-radius: 20px;">
+        <h4 style="text-align:center">Register User</h4>       
+            <form [formGroup]="RegistrationForm" style=" background-color: white; border:2px solid gray;  margin-top:20px; padding: 10px; border-radius: 20px;">
+
+                <div class="form-group">
+                    <label>First name</label>
+                    <input class="form-control" type="text" formControlName="firstName">
+
+                    <small style="color:red" *ngIf="firstName.invalid && (firstName?.dirty || firstName?.touched)">
+                       please enter name.
+                    </small>
+                </div>
+
+                <div class="form-group">
+                    <label>User name</label>
+                    <input class="form-control" type="text" formControlName="username">
+                </div>
+        
+                <div class="form-group">
+                    <label>Password</label>
+                    <input class="form-control" #pass type="text" formControlName="password">           
+                    <small style="color:red" *ngIf="password.invalid && (password?.dirty || password?.touched)">
+                        please enter password.
+                     </small>    
+                </div>
+
+                <div class="form-group" *ngIf="pass.value!=''" >
+                    <label>Confirm Password</label>
+                    <input  #cpass class="form-control"  type="text" formControlName="cpassword">     
+                    <small class="error" *ngIf="pass.value!=cpass.value">Password and confirm password are not matched.</small>               
+                </div>
+
+                <button [disabled]="RegistrationForm.invalid" (click)="SubmitDetails()" class="btn btn-block btn-success">Register</button>                
+            </form>       
+    </div>   
